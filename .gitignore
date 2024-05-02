@@ -1,3 +1,4 @@
 /db_config.env
 /music_app_tracker/.idea
 /music_app_tracker/.venv
+/music_app_tracker/db.sqlite3
