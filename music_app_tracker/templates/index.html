@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href="{% static 'dist/css/bootstrap.min.css' %}">
+    <title>Title</title>
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="text-center mt-5 mb-3">
+                    <h1>Enter SQL Query</h1>
+                </div>
+                <form method="post" class="mb-3">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <input type="text" name="query" class="form-control" placeholder="Enter your SQL query here" style="height: 62px">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-primary mb-2 form-control">Submit Query</button>
+                        </div>
+                    </div>
+                </form>
+
+                {% if query_result %}
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="thead-light">
+                            <tr>
+                                {% for header in column_headers %}
+                                    <th>{{ header }}</th>
+                                {% endfor %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for row in query_result %}
+                                <tr>
+                                    {% for item in row %}
+                                        <td>{{ item }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-center">No results to display.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+<script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "music_app_db_viewer.apps.MusicAppDbViewerConfig"
+    "music_app_db_viewer.apps.MusicAppDbViewerConfig",
 ]
 
 MIDDLEWARE = [
@@ -119,7 +119,17 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'node_modules/bootstrap',
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+try:
+    from music_app_db_viewer.local_settings import *
+except ImportError:
+    pass

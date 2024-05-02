@@ -2,3 +2,5 @@
 /music_app_tracker/.idea
 /music_app_tracker/.venv
 /music_app_tracker/db.sqlite3
+/music_app_tracker/node_modules
+/music_app_tracker/music_app_db_viewer/local_settings.py
